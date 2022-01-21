@@ -5,6 +5,7 @@ function ExpenseForm(props) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
+  const [isOpen, setIsOpen] = useState("false");
 
   const titleChangeHandler = (event) => {
     setTitle(event.target.value);
@@ -29,7 +30,23 @@ function ExpenseForm(props) {
     setTitle("");
     setAmount("");
     setDate("");
+
+    clickHandler();
   };
+
+  const clickHandler = () => {
+    setIsOpen(!isOpen);
+  };
+
+  if (isOpen) {
+    return (
+      <div className="new-expense__actions">
+        <button onClick={clickHandler} type="button">
+          Add New Expense
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={submitHandler}>
@@ -60,6 +77,9 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={clickHandler}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
