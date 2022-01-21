@@ -8,7 +8,7 @@ function NewExpense(props) {
       id: Math.random().toString(),
     };
 
-    props.addExpenseHandler(expense);
+    props.onAddExpense(expense);
   };
 
   return (
